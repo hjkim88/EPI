@@ -26,10 +26,10 @@ def start():
     d = int('10001000',2)
 
     ### print the parity of the examples
-    print("Input: ", a, " Parity: ", parityCheck(a))
-    print("Input: ", b, " Parity: ", parityCheck(b))
-    print("Input: ", c, " Parity: ", parityCheck(c))
-    print("Input: ", d, " Parity: ", parityCheck(d))
+    print("Input: ", bin(a), " Parity: ", parityCheck(a))
+    print("Input: ", bin(b), " Parity: ", parityCheck(b))
+    print("Input: ", bin(c), " Parity: ", parityCheck(c))
+    print("Input: ", bin(d), " Parity: ", parityCheck(d))
 
 
 ### a function to generate a random n-bit integer number
