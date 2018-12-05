@@ -15,10 +15,64 @@
 #               3. The results will be generated in the console
 ###
 
+### a function starting this script
 def start():
     print("p24.py")
 
+    ### some example integers
+    a = Random64BinGeneration(64, 1234)
+    b = Random64BinGeneration(64, 4321)
+    c = int('1011',2)
+    d = int('10001000',2)
+
+    ### print the parity of the examples
+    print("Input: ", a, " Parity: ", parityCheck(a))
+    print("Input: ", b, " Parity: ", parityCheck(b))
+    print("Input: ", c, " Parity: ", parityCheck(c))
+    print("Input: ", d, " Parity: ", parityCheck(d))
+
+
+### a function to generate a random n-bit integer number
+def Random64BinGeneration(n, seed):
+    # print("Random64BinGeneration()")
+
+    ### load library
+    import random
+
+    ### set a seed for random generation
+    random.seed(seed)
+
+    ### return random n bit integer
+    return random.randint(0, 2**n-1)
+
+
+### a function to check parity of a given integer number
+def parityCheck(input_word):
+    # print("parityCheck()")
+
+    ### return only if a given number is positive
+    if input_word >= 0:
+        ### load library
+        import math
+
+        ### set initial count
+        cnt = 0
+
+        ### compute how many 1s in the number in binary form
+        while math.floor(input_word / 2) != 0:
+            if input_word % 2 == 1:
+                cnt = cnt + 1
+            input_word = math.floor(input_word / 2)
+        if(input_word == 1):
+            cnt = cnt + 1
+
+        ### return the parity
+        if(cnt % 2 == 1):
+            return 1
+        else:
+            return 0
+    else:
+        print("ERROR: the given integer is negative. It should be equal or bigger than 0.")
+
 
 start()
-
-
