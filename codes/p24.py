@@ -95,4 +95,11 @@ def parity(x):
     return result
 
 
+### hint: use a lookup table, but don't use 2**64 entries!
+
+
+###
+
+
+
 start()
