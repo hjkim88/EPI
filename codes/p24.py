@@ -50,6 +50,13 @@ def start():
     print("Input: ", bin(d), " Parity: ", parity2(d))
     print("Execution Time: ", timeit.default_timer() - start_time)
 
+    start_time = timeit.default_timer()
+    print("Input: ", bin(a), " Parity: ", parity4(a))
+    print("Input: ", bin(b), " Parity: ", parity4(b))
+    print("Input: ", bin(c), " Parity: ", parity4(c))
+    print("Input: ", bin(d), " Parity: ", parity4(d))
+    print("Execution Time: ", timeit.default_timer() - start_time)
+
 ### a function to generate a random n-bit integer number
 def Random64BinGeneration(n, seed):
     # print("Random64BinGeneration()")
@@ -112,6 +119,27 @@ def parity2(x):
         result ^= 1
         x &= x - 1
     return result
+
+
+### use a lookup table of 2**16 and combine the 4 at the end
+# def parity3(x):
+#     MASK_SIZE = 16
+#     BIT_MASK = 0xFFFF
+#     return(PRECOMPUTED_PARITY[x >> (3 * MASK_SIZE)] ^
+#            PRECOMPUTED_PARITY[(x >> (2 * MASK_SIZE)) & BIT_MASK] ^
+#            PRECOMPUTED_PARITY[(x >> MASK_SIZE) & BIT_MASK] ^
+#            PRECOMPUTED_PARITY[x & BIT_MASK])
+
+
+### use the beauty of XOR and do it like divide and conquer
+def parity4(x):
+    x ^= x >> 32
+    x ^= x >> 16
+    x ^= x >> 8
+    x ^= x >> 4
+    x ^= x >> 2
+    x ^= x >> 1
+    return(x & 0x1)
 
 
 start()
