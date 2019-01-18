@@ -25,6 +25,63 @@ import timeit
 def start():
     print("4_2_p27.py")
 
+    start_time = timeit.default_timer()
+    print("bit_swap(01011010, 1, 5) = ", bin(bit_swap(int('01011010', 2), 1, 5)))
+    print("Execution Time: ", timeit.default_timer() - start_time)
+
+    start_time = timeit.default_timer()
+    print("bit_swap2(01011010, 1, 5) = ", bin(bit_swap2(int('01011010', 2), 1, 5)))
+    print("Execution Time: ", timeit.default_timer() - start_time)
+
+    start_time = timeit.default_timer()
+    print("swap_bits(01011010, 1, 5) = ", bin(swap_bits(int('01011010', 2), 1, 5)))
+    print("Execution Time: ", timeit.default_timer() - start_time)
 
 
+### a brute-force function to swap bits in a 64-bit integer
+def bit_swap(integer, i, j):
+    a = integer & (2**i)
+    b = integer & (2**j)
 
+    if(a == 0):
+        c = integer & (~(2**j))
+    else:
+        c = integer | (2**j)
+
+    if(b == 0):
+        c = c & (~(2**i))
+    else:
+        c = c | (2**i)
+
+    return c
+
+
+### hint: when is the swap necessary?
+
+
+### a more efficient function to swap bits than the brute-force approach
+def bit_swap2(integer, i, j):
+    ### if the designated two bits are the same, no need to swap
+
+    ### test the two bits are the same
+    a = integer & (2**i + 2**j)
+
+    ### if the two bits are all 0
+    if(a == 0):
+        return integer
+    ### if the two bits are all 1
+    elif(a == (2**i + 2**j)):
+        return integer
+    else:
+        return (integer ^ (2**i + 2**j))
+
+
+### the one introduced in the book
+def swap_bits(x, i, j):
+    if(x >> i) & 1 != (x >> j) & 1:
+        bit_mask = (1 << i) | (1 << j)
+        x ^= bit_mask
+    return x
+
+
+start()
