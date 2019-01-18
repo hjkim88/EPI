@@ -1,5 +1,5 @@
 ###
-#   File name  : p24.py
+#   File name  : 4_1_p24.py
 #   Author     : Hyunjin Kim
 #   Date       : Nov 29, 2018
 #   Email      : firadazer@gmail.com
@@ -10,17 +10,18 @@
 #                It is fairly straightforward to write code that computes the parity of a single 64-bit word.
 #
 #   Instruction
-#               1. import p24
-#               2. Run the function p24.start()
+#               1. import 4_1_p24
+#               2. Run the function 4_1_p24.start()
 #               3. The results will be generated in the console
 ###
 
 ### import modules
 import timeit
 
+
 ### a function starting this script
 def start():
-    print("p24.py")
+    print("4_1_p24.py")
 
     ### some example integers
     a = Random64BinGeneration(64, 1234)
@@ -56,6 +57,7 @@ def start():
     print("Input: ", bin(c), " Parity: ", parity4(c))
     print("Input: ", bin(d), " Parity: ", parity4(d))
     print("Execution Time: ", timeit.default_timer() - start_time)
+
 
 ### a function to generate a random n-bit integer number
 def Random64BinGeneration(n, seed):
