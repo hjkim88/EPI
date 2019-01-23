@@ -71,4 +71,10 @@ def exponentiation2(x, y):
     return result
 
 
+### hint: exploit mathematical properties of exponentiation
+### this is what I used in my efficient approach
+
+### the suggested approach in the book is exactly the same as mine
+
+
 start()
