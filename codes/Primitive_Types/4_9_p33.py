@@ -39,8 +39,15 @@ def start():
     print("Execution Time: ", timeit.default_timer() - start_time)
 
 
+### a function to check a given integer is palindrome
+### change the integer to a string and reverse it and check equality: a typical approach
 def is_palindrome(x):
-    return(x)
+    x = str(x)
+    y = x[::-1]
+    if x == y:
+        return True
+    else:
+        return False
 
 
 start()
