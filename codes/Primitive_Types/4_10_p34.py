@@ -4,7 +4,7 @@
 #   Date       : Jan 28, 2018
 #   Email      : firadazer@gmail.com
 #   Purpose    : How would you implement a random number generator that generates
-#                a  random integer i between a and b, inclusive, given a random
+#                a random integer i between a and b, inclusive, given a random
 #                number generator that produces zero or one with equal probability?
 #                All values in [a,b] should be equally likely.
 #   Background : This problem is motivated by the following scenario.
@@ -19,7 +19,7 @@
 
 ### import modules
 import timeit
-
+import random
 
 ### a function starting this script
 def start():
@@ -33,8 +33,34 @@ def start():
     print("generate_random_num(48, 2) = ", generate_random_num(48, 2))
     print("Execution Time: ", timeit.default_timer() - start_time)
 
+    start_time = timeit.default_timer()
+    print("generate_random_num2(1, 6) = ", generate_random_num2(1, 6))
+    print("generate_random_num2(25, 125) = ", generate_random_num2(25, 125))
+    print("generate_random_num2(3, 3) = ", generate_random_num2(3, 3))
+    print("generate_random_num2(9, 54) = ", generate_random_num2(9, 54))
+    print("generate_random_num2(48, 2) = ", generate_random_num2(48, 2))
+    print("Execution Time: ", timeit.default_timer() - start_time)
 
+
+### a brute-force approach to generate random number
+### a tournament approach
 def generate_random_num(a, b):
+    if(a > b):
+        a, b = b, a
+    x = list(range(a, b+1))
+    while len(x) > 1:
+        y = list()
+        for i in range(len(x)):
+            if random.randint(0,1):
+                y.append(i)
+        if len(y) > 0:
+            x = list(x[i] for i in y)
+
+    return x[0]
+
+
+### a more efficient approach to generate random number
+def generate_random_num2(a, b):
     return(a)
 
 
