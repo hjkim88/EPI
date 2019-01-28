@@ -30,11 +30,19 @@ def start():
     print("Execution Time: ", timeit.default_timer() - start_time)
 
     start_time = timeit.default_timer()
-    print("reverse_digit2(42) = ", reverse_digit(42))
-    print("reverse_digit2(-314) = ", reverse_digit(-314))
-    print("reverse_digit2(5) = ", reverse_digit(5))
-    print("reverse_digit2(329573) = ", reverse_digit(329573))
-    print("reverse_digit2(-9837434) = ", reverse_digit(-9837434))
+    print("reverse_digit2(42) = ", reverse_digit2(42))
+    print("reverse_digit2(-314) = ", reverse_digit2(-314))
+    print("reverse_digit2(5) = ", reverse_digit2(5))
+    print("reverse_digit2(329573) = ", reverse_digit2(329573))
+    print("reverse_digit2(-9837434) = ", reverse_digit2(-9837434))
+    print("Execution Time: ", timeit.default_timer() - start_time)
+
+    start_time = timeit.default_timer()
+    print("reverse_digit3(42) = ", reverse_digit3(42))
+    print("reverse_digit3(-314) = ", reverse_digit3(-314))
+    print("reverse_digit3(5) = ", reverse_digit3(5))
+    print("reverse_digit3(329573) = ", reverse_digit3(329573))
+    print("reverse_digit3(-9837434) = ", reverse_digit3(-9837434))
     print("Execution Time: ", timeit.default_timer() - start_time)
 
 
@@ -76,6 +84,15 @@ def reverse_digit2(x):
         return x[::-1]
     else:
         return "-" + x[::-1]
+
+
+### an efficient function in the book
+def reverse_digit3(x):
+    result, x_remaining = 0, abs(x)
+    while x_remaining:
+        result = result * 10 + x_remaining % 10
+        x_remaining //= 10
+    return -result if x < 0 else result
 
 
 start()
