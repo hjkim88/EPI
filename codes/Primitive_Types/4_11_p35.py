@@ -23,5 +23,8 @@ def start():
     print("4_11_p35.py")
 
 
+### a function to return intersection of two rectangles
+def rect_intersect(a, b, c, d, e, f, g, h):
+    return(a, b, c, d)
 
 
