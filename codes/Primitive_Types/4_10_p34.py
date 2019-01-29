@@ -21,6 +21,7 @@
 import timeit
 import random
 
+
 ### a function starting this script
 def start():
     print("4_10_p34.py")
@@ -45,7 +46,7 @@ def start():
 ### a brute-force approach to generate random number
 ### a tournament approach
 def generate_random_num(a, b):
-    if(a > b):
+    if a > b:
         a, b = b, a
     x = list(range(a, b+1))
     while len(x) > 1:
@@ -60,7 +61,32 @@ def generate_random_num(a, b):
 
 
 ### a more efficient approach to generate random number
+### this is improved than the above since the above determines 0/1 for one each,
+### while this one can solve two by one 0/1
 def generate_random_num2(a, b):
+    if a > b:
+        a, b = b, a
+    x = list(range(a, b + 1))
+    while len(x) > 1:
+        y = list()
+        for i in range(len(x)//2):
+            if random.randint(0,1):
+                y.append(i*2)
+            else:
+                y.append(i*2+1)
+        if len(x) % 2 and random.randint(0,1):
+            y.append(len(x)-1)
+        x = list(x[i] for i in y)
+
+    return(x[0])
+
+
+### hint: how would you mimic a three-sided coin with a two-sided coin?
+
+
+### a more efficient function to generate random number
+### using binary numbers
+def generate_random_num3(a, b):
     return(a)
 
 
