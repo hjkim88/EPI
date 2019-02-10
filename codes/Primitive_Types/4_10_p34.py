@@ -20,6 +20,7 @@
 ### import modules
 import timeit
 import random
+import math
 
 
 ### a function starting this script
@@ -40,6 +41,22 @@ def start():
     print("generate_random_num2(3, 3) = ", generate_random_num2(3, 3))
     print("generate_random_num2(9, 54) = ", generate_random_num2(9, 54))
     print("generate_random_num2(48, 2) = ", generate_random_num2(48, 2))
+    print("Execution Time: ", timeit.default_timer() - start_time)
+
+    start_time = timeit.default_timer()
+    print("generate_random_num3(1, 6) = ", generate_random_num3(1, 6))
+    print("generate_random_num3(25, 125) = ", generate_random_num3(25, 125))
+    print("generate_random_num3(3, 3) = ", generate_random_num3(3, 3))
+    print("generate_random_num3(9, 54) = ", generate_random_num3(9, 54))
+    print("generate_random_num3(48, 2) = ", generate_random_num3(48, 2))
+    print("Execution Time: ", timeit.default_timer() - start_time)
+
+    start_time = timeit.default_timer()
+    print("generate_random_num4(1, 6) = ", generate_random_num4(1, 6))
+    print("generate_random_num4(25, 125) = ", generate_random_num4(25, 125))
+    print("generate_random_num4(3, 3) = ", generate_random_num4(3, 3))
+    print("generate_random_num4(9, 54) = ", generate_random_num4(9, 54))
+    print("generate_random_num4(2, 48) = ", generate_random_num4(2, 48))
     print("Execution Time: ", timeit.default_timer() - start_time)
 
 
@@ -87,7 +104,29 @@ def generate_random_num2(a, b):
 ### a more efficient function to generate random number
 ### using binary numbers
 def generate_random_num3(a, b):
-    return(a)
+    num_chance = abs(a - b)+1
+    num_digits = math.floor(math.log2(num_chance)) + 1
+
+    result = num_chance
+    while result >= num_chance:
+        result = 0
+        for i in range(num_digits):
+            result += (2**i) * random.randint(0,1)
+
+    return(result+min(a, b))
+
+
+### a function described in the book
+def generate_random_num4(lower_bound, upper_bound):
+    number_of_outcomes = upper_bound - lower_bound + 1
+    while True:
+        result, i = 0, 0
+        while (1 << i) < number_of_outcomes:
+            result = (result << 1) | random.randint(0,1)
+            i += 1
+        if result < number_of_outcomes:
+            break
+    return result + lower_bound
 
 
 start()
