@@ -16,6 +16,7 @@
 
 ### import modules
 import timeit
+import collections
 
 
 ### a function starting this script
@@ -23,12 +24,15 @@ def start():
     print("4_11_p35.py")
 
     start_time = timeit.default_timer()
-    print("")
+    print("fun_one(Point(1,7), Point(4,2), Point(1,2), Point(4,7) = ",
+          fun_one(Point(1,7), Point(4,2), Point(1,2), Point(4,7)))
     print("Execution Time: ", timeit.default_timer() - start_time)
 
 
 ### a function to check that the four given points represent a rectangle
-def fun_one():
+Point = collections.namedtuple("Point", ("x", "y"))
+
+def fun_one(p1, p2, p3, p4):
     return None
 
 
