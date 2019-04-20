@@ -1,7 +1,7 @@
 ###
 #   File name  : 4_11_variant.py
 #   Author     : Hyunjin Kim
-#   Date       : Feb 22, 2018
+#   Date       : Feb 22, 2019
 #   Email      : firadazer@gmail.com
 #   Purpose    : 1. Given four points in the plane, how would you check if they are the vertices of a rectangle?
 #                2. How would you check if two rectangles, not necessarily aligned with the X and Y axes, intersect?
