@@ -1,7 +1,7 @@
 ###
 #   File name  : 4_4_p28.py
 #   Author     : Hyunjin Kim
-#   Date       : Jan 19, 2018
+#   Date       : Jan 19, 2019
 #   Email      : firadazer@gmail.com
 #   Purpose    : Write a program which takes as input a nonnegative integer x and returns a number y
 #                which is not equal to x, but has the same weight as x and their difference,

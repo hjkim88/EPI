@@ -1,7 +1,7 @@
 ###
 #   File name  : 4_11_p35.py
 #   Author     : Hyunjin Kim
-#   Date       : Jan 28, 2018
+#   Date       : Jan 28, 2019
 #   Email      : firadazer@gmail.com
 #   Purpose    : Write a program which tests if two rectangles have a nonempty intersection.
 #                If the intersection is nonempty, return the rectangle formed by their intersection.

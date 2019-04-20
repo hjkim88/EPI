@@ -1,7 +1,7 @@
 ###
 #   File name  : 4_8_p32.py
 #   Author     : Hyunjin Kim
-#   Date       : Jan 23, 2018
+#   Date       : Jan 23, 2019
 #   Email      : firadazer@gmail.com
 #   Purpose    : Write a program which takes an integer and returns the integer
 #                corresponding to the digits of the input written in reverse order.

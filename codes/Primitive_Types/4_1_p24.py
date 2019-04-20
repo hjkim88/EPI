@@ -1,7 +1,7 @@
 ###
 #   File name  : 4_1_p24.py
 #   Author     : Hyunjin Kim
-#   Date       : Nov 29, 2018
+#   Date       : Nov 29, 2019
 #   Email      : firadazer@gmail.com
 #   Purpose    : How would you compute the parity of a very large number of 64-bit words?
 #   Background : The parity of a binary word is 1 if the number of 1s in the word is odd;

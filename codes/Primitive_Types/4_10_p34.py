@@ -1,7 +1,7 @@
 ###
 #   File name  : 4_10_p34.py
 #   Author     : Hyunjin Kim
-#   Date       : Jan 28, 2018
+#   Date       : Jan 28, 2019
 #   Email      : firadazer@gmail.com
 #   Purpose    : How would you implement a random number generator that generates
 #                a random integer i between a and b, inclusive, given a random

@@ -1,7 +1,7 @@
 ###
 #   File name  : 4_6_p31.py
 #   Author     : Hyunjin Kim
-#   Date       : Jan 23, 2018
+#   Date       : Jan 23, 2019
 #   Email      : firadazer@gmail.com
 #   Purpose    : Given two positive integers, compute their quotient,
 #                using only the addition, subtraction, and shifting operators.

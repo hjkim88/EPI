@@ -1,7 +1,7 @@
 ###
 #   File name  : 4_3_p28.py
 #   Author     : Hyunjin Kim
-#   Date       : Jan 18, 2018
+#   Date       : Jan 18, 2019
 #   Email      : firadazer@gmail.com
 #   Purpose    : Write a program that takes a 64-bit word and returns the 64-bit word consisting of
 #                the bits of the input word in reverse order.

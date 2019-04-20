@@ -1,7 +1,7 @@
 ###
 #   File name  : 4_9_p33.py
 #   Author     : Hyunjin Kim
-#   Date       : Jan 28, 2018
+#   Date       : Jan 28, 2019
 #   Email      : firadazer@gmail.com
 #   Purpose    : Write a program that takes an integer and determines if that
 #                integer's representation as a decimal string is a palindrome

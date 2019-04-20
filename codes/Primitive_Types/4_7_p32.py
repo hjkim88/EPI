@@ -1,7 +1,7 @@
 ###
 #   File name  : 4_7_p32.py
 #   Author     : Hyunjin Kim
-#   Date       : Jan 23, 2018
+#   Date       : Jan 23, 2019
 #   Email      : firadazer@gmail.com
 #   Purpose    : Write a program that takes a double x and an integer y
 #                and returns x**y. You can ignore overflow and underflow.
