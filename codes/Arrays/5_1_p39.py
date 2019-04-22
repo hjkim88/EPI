@@ -26,5 +26,13 @@ def start():
 
     ### print the parity of the examples
     start_time = timeit.default_timer()
+    print("rearrange([3, 2, 1, 3, 2, 3, 1, 1, 3], 4): ", rearrange([3, 2, 1, 3, 2, 3, 1, 1, 3], 4))
     print("Execution Time: ", timeit.default_timer() - start_time)
 
+
+### a function of Dutch flag problem
+def rearrange(A, i):
+    return A
+
+
+start()
