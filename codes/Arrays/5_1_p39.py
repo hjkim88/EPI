@@ -31,7 +31,17 @@ def start():
 
 
 ### a function of Dutch flag problem
+### from the start, compare the start and the pivot
+### if the start > pivot, swap it with the end value and endIdx--
+### if the start < pivot, then startIdx++
+### if the start == pivot, swap it with the value at (i+1), and i = i++
+### repeat this until startIdx == endIdx
 def rearrange(A, i):
+    startIdx, endIdx = 0, len(A)-1
+
+    while startIdx < endIdx:
+
+
     return A
 
 
