@@ -27,6 +27,11 @@ def start():
     ### print the parity of the examples
     start_time = timeit.default_timer()
     print("rearrange([3, 2, 1, 3, 2, 3, 1, 1, 3], 4): ", rearrange([3, 2, 1, 3, 2, 3, 1, 1, 3], 4))
+    print("rearrange([4, 1, 3, 7, 3, 2, 7, 4, 3], 1): ", rearrange([4, 1, 3, 7, 3, 2, 7, 4, 3], 1))
+    print("rearrange([8, 5, 7, 2, 4, 4, 4, 7, 1], 7): ", rearrange([8, 5, 7, 2, 4, 4, 4, 7, 1], 7))
+    print("rearrange([6, 6, 2, 7, 5, 3, 6, 1, 2], 5): ", rearrange([6, 6, 2, 7, 5, 3, 6, 1, 2], 5))
+    print("rearrange([1, 9, 4, 0, 3, 5, 8, 3, 8], 0): ", rearrange([1, 9, 4, 0, 3, 5, 8, 3, 8], 0))
+    print("rearrange([6, 4, 2, 7, 4, 4, 1, 6, 7], 8): ", rearrange([6, 4, 2, 7, 4, 4, 1, 6, 7], 8))
     print("Execution Time: ", timeit.default_timer() - start_time)
 
 
@@ -40,7 +45,17 @@ def rearrange(A, i):
     startIdx, endIdx = 0, len(A)-1
 
     while startIdx < endIdx:
-
+        if(A[startIdx] > A[i]):
+            temp = A[startIdx]
+            A[startIdx] = A[endIdx]
+            A[endIdx] = temp
+            endIdx -= 1
+        elif(A[startIdx] < A[i]):
+            startIdx += 1
+        else:
+            A[startIdx] = A[i+1]
+            A[i+1] = A[i]
+            i += 1
 
     return A
 
