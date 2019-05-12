@@ -15,7 +15,7 @@
 #                   so that objects that have the key false appear first. Use O(1) additional
 #                   space and O(n) time.
 #                4. Given an array A of n objects with Boolean-valued keys, reorder the array
-#                   so that objects that have the keay false appear first. The relative ordering
+#                   so that objects that have the key false appear first. The relative ordering
 #                   of objects with key true should not change. Use O(1) additional space
 #                   and O(n) time.
 #
@@ -48,6 +48,14 @@ def start():
     print("fun_two([2, 1, 1, 0, 0, 1, 0, 2, 3, 3] = )", fun_two([2, 1, 1, 0, 0, 1, 0, 2, 3, 3]))
     print("fun_two([3, 0, 0, 1, 3, 0, 2, 1, 2, 3] = )", fun_two([3, 0, 0, 1, 3, 0, 2, 1, 2, 3]))
     print("fun_two([1, 3, 3, 3, 3, 2, 0, 2, 1, 1] = )", fun_two([1, 3, 3, 3, 3, 2, 0, 2, 1, 1]))
+    print("Execution Time: ", timeit.default_timer() - start_time)
+
+    start_time = timeit.default_timer()
+    print("fun_three([False, False, True, False, False, True, True, False]) = ", fun_three([False, False, True, False, False, True, True, False]))
+    print("fun_three([True, True, False, True, False, False, True, True]) = ", fun_three([True, True, False, True, False, False, True, True]))
+    print("fun_three([True, False, False, True, False, True, False, True, False]) = ", fun_three([True, False, False, True, False, True, False, True, False]))
+    print("fun_three([False, False, False, True, False, False, False, False]) = ", fun_three([False, False, False, True, False, False, False, False]))
+    print("fun_three([True, False, False, False, True, False, True, False, True]) = ", fun_three([True, False, False, False, True, False, True, False, True]))
     print("Execution Time: ", timeit.default_timer() - start_time)
 
 
@@ -111,6 +119,33 @@ def fun_two(A):
             current_idx -= 1
         else:
             break
+
+    return A
+
+
+### a function to order a boolean array
+### false - true
+def fun_three(A):
+    start_idx, end_idx = 0, len(A)-1
+
+    while start_idx < end_idx:
+        while not A[start_idx] and start_idx < end_idx:
+            start_idx += 1
+        while A[end_idx] and start_idx < end_idx:
+            end_idx -= 1
+        if start_idx < end_idx:
+            A[start_idx], A[end_idx] = A[end_idx], A[start_idx]
+            start_idx += 1
+            end_idx -= 1
+
+    return A
+
+
+### a function to order a boolean array
+### false - true
+### it seems the above fun_three() is slow
+### make a new one
+def fun_three2(A):
 
     return A
 
