@@ -35,12 +35,83 @@ def start():
     print("5_1_variant.py")
 
     start_time = timeit.default_timer()
-    print("")
+    print("fun_one([0, 2, 1, 1, 0, 0, 1, 2, 0, 1] = )", fun_one([0, 2, 1, 1, 0, 0, 1, 2, 0, 1]))
+    print("fun_one([1, 1, 0, 2, 0, 1, 0, 2, 1, 0] = )", fun_one([1, 1, 0, 2, 0, 1, 0, 2, 1, 0]))
+    print("fun_one([2, 1, 1, 0, 0, 1, 0, 2, 0, 2] = )", fun_one([2, 1, 1, 0, 0, 1, 0, 2, 0, 2]))
+    print("fun_one([0, 0, 0, 1, 0, 0, 2, 1, 2, 0] = )", fun_one([0, 0, 0, 1, 0, 0, 2, 1, 2, 0]))
+    print("fun_one([1, 1, 0, 2, 0, 2, 0, 2, 1, 1] = )", fun_one([1, 1, 0, 2, 0, 2, 0, 2, 1, 1]))
+    print("Execution Time: ", timeit.default_timer() - start_time)
+
+    start_time = timeit.default_timer()
+    print("fun_two([0, 2, 3, 1, 0, 3, 1, 2, 0, 1] = )", fun_two([0, 2, 3, 1, 0, 3, 1, 2, 0, 1]))
+    print("fun_two([1, 3, 3, 2, 0, 1, 0, 2, 3, 0] = )", fun_two([1, 3, 3, 2, 0, 1, 0, 2, 3, 0]))
+    print("fun_two([2, 1, 1, 0, 0, 1, 0, 2, 3, 3] = )", fun_two([2, 1, 1, 0, 0, 1, 0, 2, 3, 3]))
+    print("fun_two([3, 0, 0, 1, 3, 0, 2, 1, 2, 3] = )", fun_two([3, 0, 0, 1, 3, 0, 2, 1, 2, 3]))
+    print("fun_two([1, 3, 3, 3, 3, 2, 0, 2, 1, 1] = )", fun_two([1, 3, 3, 3, 3, 2, 0, 2, 1, 1]))
     print("Execution Time: ", timeit.default_timer() - start_time)
 
 
 ### a function for the first task
+### suppose there are only 3 values, [0, 1, 2]
+### set three indicies
+### two indicies indicate two groups
+### the third index indicates current position in a loop
+### the third index starts from 0
+### one index starts from 0 to len(A) the other starts from len(A)-1 to 0
+### for one group, switch them all to the start
+### for another one switch them all to the end
+### for the last group, just count up the current index
+### loop until the current position index meets the end index
+x = [0, 1, 2]
 def fun_one(A):
+    start_idx, current_idx, end_idx = 0, 0, len(A)-1
+
+    while current_idx <= end_idx:
+        if A[current_idx] == x[0]:
+            A[start_idx], A[current_idx] = A[current_idx], A[start_idx]
+            start_idx += 1
+            current_idx += 1
+        elif A[current_idx] == x[1]:
+            current_idx += 1
+        else:
+            A[end_idx], A[current_idx] = A[current_idx], A[end_idx]
+            end_idx -= 1
+
+    return A
+
+
+### the fun_one should be done twice forward + backward
+### in the forward pass, suppose there are only 3 groups - {0}, {1}, and {2,3}
+### do not consider order in {2,3} - they will be ordered in the backward pass
+### in the backward pass, suppose there are only 3 groups - {3}, {2}, {1,0}
+### do not considr order in {1,0} - here they are already ordered in the forward pass
+x = [0, 1, 2, 3]
+def fun_two(A):
+    start_idx, current_idx, end_idx = 0, 0, len(A)-1
+
+    while current_idx <= end_idx:
+        if A[current_idx] == x[0]:
+            A[start_idx], A[current_idx] = A[current_idx], A[start_idx]
+            start_idx += 1
+            current_idx += 1
+        elif A[current_idx] == x[1]:
+            current_idx += 1
+        else:
+            A[end_idx], A[current_idx] = A[current_idx], A[end_idx]
+            end_idx -= 1
+
+    start_idx, current_idx = len(A)-1, len(A)-1
+
+    while current_idx > end_idx:
+        if A[current_idx] == x[3]:
+            A[start_idx], A[current_idx] = A[current_idx], A[start_idx]
+            start_idx -= 1
+            current_idx -= 1
+        elif A[current_idx] == x[2]:
+            current_idx -= 1
+        else:
+            break
+
     return A
 
 
