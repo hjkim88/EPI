@@ -22,8 +22,29 @@ def start():
     print("5_2_p43.py")
 
     start_time = timeit.default_timer()
-    print("")
+    print("plus_one([1, 2, 9]) = ", plus_one([1, 2, 9]))
+    print("plus_one([4, 3, 2, 6, 4, 9, 9.00, 9]) = ", plus_one([4, 3, 2, 6, 4, 9, 9.00, 9]))
+    print("plus_one([1, 5, 3, 2, 4, 5.0]) = ", plus_one([1, 5, 3, 2, 4, 5.0]))
+    print("plus_one([9, 9, 9, 9, 9]) = ", plus_one([9, 9, 9, 9, 9]))
+    print("plus_one([9, 3, 4, 2, 3]) = ", plus_one([9, 3, 4, 2, 3]))
     print("Execution Time: ", timeit.default_timer() - start_time)
+
+
+### a function to return A+1, where the A indicates an input array that represents a integer
+### a brute-force approach is start from the end index +1 there and if it excceds 9,
+### propagate +1 to the left
+### i think this is the fastest
+def plus_one(A):
+    for i in reversed(range(len(A))):
+        if A[i] == 9:
+            A[i] = 0
+            if i == 0:
+                A.insert(0, 1)
+        else:
+            A[i] = int(A[i]+1)
+            break
+
+    return A
 
 
 start()
