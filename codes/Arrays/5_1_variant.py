@@ -58,6 +58,22 @@ def start():
     print("fun_three([True, False, False, False, True, False, True, False, True]) = ", fun_three([True, False, False, False, True, False, True, False, True]))
     print("Execution Time: ", timeit.default_timer() - start_time)
 
+    start_time = timeit.default_timer()
+    print("fun_three2([False, False, True, False, False, True, True, False]) = ", fun_three2([False, False, True, False, False, True, True, False]))
+    print("fun_three2([True, True, False, True, False, False, True, True]) = ", fun_three2([True, True, False, True, False, False, True, True]))
+    print("fun_three2([True, False, False, True, False, True, False, True, False]) = ", fun_three2([True, False, False, True, False, True, False, True, False]))
+    print("fun_three2([False, False, False, True, False, False, False, False]) = ", fun_three2([False, False, False, True, False, False, False, False]))
+    print("fun_three2([True, False, False, False, True, False, True, False, True]) = ", fun_three2([True, False, False, False, True, False, True, False, True]))
+    print("Execution Time: ", timeit.default_timer() - start_time)
+
+    start_time = timeit.default_timer()
+    print("fun_four([False, False, True, False, False, True, True, False]) = ", fun_four([False, False, True, False, False, True, True, False]))
+    print("fun_four([True, True, False, True, False, False, True, True]) = ", fun_four([True, True, False, True, False, False, True, True]))
+    print("fun_four([True, False, False, True, False, True, False, True, False]) = ", fun_four([True, False, False, True, False, True, False, True, False]))
+    print("fun_four([False, False, False, True, False, False, False, False]) = ", fun_four([False, False, False, True, False, False, False, False]))
+    print("fun_four([True, False, False, False, True, False, True, False, True]) = ", fun_four([True, False, False, False, True, False, True, False, True]))
+    print("Execution Time: ", timeit.default_timer() - start_time)
+
 
 ### a function for the first task
 ### suppose there are only 3 values, [0, 1, 2]
@@ -146,6 +162,28 @@ def fun_three(A):
 ### it seems the above fun_three() is slow
 ### make a new one
 def fun_three2(A):
+    end_idx, i = len(A)-1, 0
+
+    while i <= end_idx:
+        if A[i]:
+            A[i], A[end_idx] = A[end_idx], A[i]
+            end_idx -= 1
+        else:
+            i += 1
+
+    return A
+
+
+### a function to order a boolean array
+### false - true
+### but relative order of true should not change
+def fun_four(A):
+    end_idx = len(A)-1
+
+    for i in reversed(range(len(A))):
+        if A[i]:
+            A[i], A[end_idx] = A[end_idx], A[i]
+            end_idx -= 1
 
     return A
 
