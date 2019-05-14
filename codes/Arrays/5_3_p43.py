@@ -25,7 +25,21 @@ def start():
     print("Execution Time: ", timeit.default_timer() - start_time)
 
 
+### a function to multiply two arrays
+### a brute-force approach would be convert them to numeric value
+### get multiplied value and return it as an array
+### here, the product is calculated bit-by-bit from the LSB
 def array_product(x, y):
+    minus = False
+    if x[0] is '-':
+        x_len = len(x)-1
+        minus = not minus
+    if y[0] is '-':
+        y_len = len(y)-1
+        minus = not minus
+
+
+
 
     return 0
 
