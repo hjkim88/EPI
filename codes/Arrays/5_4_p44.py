@@ -23,14 +23,28 @@ def start():
     print("5_4_p44.py")
 
     start_time = timeit.default_timer()
-    print("")
+    print("isAdvancable([3, 3, 1, 0, 2, 0, 1]) = ", isAdvancable([3, 3, 1, 0, 2, 0, 1]))
+    print("isAdvancable([3, 2, 0, 0, 2, 0, 1]) = ", isAdvancable([3, 2, 0, 0, 2, 0, 1]))
+    print("isAdvancable([1, 1, 1, 1, 1, 1, 1]) = ", isAdvancable([1, 1, 1, 1, 1, 1, 1]))
+    print("isAdvancable([0, 3, 1, 0, 2, 0, 1]) = ", isAdvancable([0, 3, 1, 0, 2, 0, 1]))
+    print("isAdvancable([10, 3, 1, 0, 2, 0, 1]) = ", isAdvancable([10, 3, 1, 0, 2, 0, 1]))
     print("Execution Time: ", timeit.default_timer() - start_time)
 
 
 ### a function to tell whether the input array is advancable or not
+### just one FOR loop. check every item until it reaches the end index or stuck in the middle
 def isAdvancable(A):
-    
-    return False
+    maxIdx = 0
+    for i in range(len(A)):
+        if i > maxIdx:
+            break
+        else:
+            maxIdx = max(maxIdx, (i + A[i]))
+
+    if maxIdx >= len(A):
+        return True
+    else:
+        return False
 
 
 start()
