@@ -70,9 +70,18 @@ def fun_two(A, m):
             elif dup_num >= m:
                 A[write_idx:(write_idx+2)] = [A[i-1]] * 2
                 write_idx = write_idx + 2
+                dup_num = 1
             else:
+                A[write_idx:(write_idx+dup_num)] = [A[i-1]] * dup_num
                 write_idx = write_idx + dup_num
                 dup_num = 1
+
+        if dup_num >= m:
+            A[write_idx:(write_idx + 2)] = [A[len(A)-1]] * 2
+            write_idx = write_idx + 2
+        else:
+            A[write_idx:(write_idx+dup_num)] = [A[len(A)-1]] * dup_num
+            write_idx = write_idx + dup_num
 
         for i in range(write_idx, len(A)):
             A[i] = 0
