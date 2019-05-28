@@ -27,8 +27,40 @@ def start():
     print("5_5_variant.py")
 
     start_time = timeit.default_timer()
-    print("")
+    print("fun_one([4, 1, 3, 4, 6, 3, 4, 5, 1], 4) = ", fun_one([4, 1, 3, 4, 6, 3, 4, 5, 1], 4))
+    print("fun_one([7, 4, 5, 4, 7, 2, 3, 4, 5], 1) = ", fun_one([7, 4, 5, 4, 7, 2, 3, 4, 5], 1))
+    print("fun_one([5, 5, 5, 5, 5], 5) = ", fun_one([5, 5, 5, 5, 5], 5))
+    print("fun_one([8, 2, 4, 3, 2, 4, 5, 2, 1, 4, 6, 3, 3], 2) = ", fun_one([8, 2, 4, 3, 2, 4, 5, 2, 1, 4, 6, 3, 3], 2))
+    print("fun_one([8, 2, 5, 9, 3, 1, 7, 4, 3, 8, 5], 5) = ", fun_one([8, 2, 5, 9, 3, 1, 7, 4, 3, 8, 5], 5))
     print("Execution Time: ", timeit.default_timer() - start_time)
+
+
+### a function to remove the given key in the given array and returns the remainings
+def fun_one(A, k):
+    write_idx = 0
+    for i in range(len(A)):
+        if A[i] is not k:
+            A[write_idx] = A[i]
+            write_idx += 1
+
+    for i in range(write_idx, len(A)):
+        A[i] = 0
+
+    return A
+
+
+### the second function described above
+def fun_two(A, m):
+    if m <= 2:
+        return A
+    else:
+        i = 1
+        while i < len(A):
+            if A[i] is A[i-1]:
+                A[i]
+                
+
+        return A
 
 
 start()
