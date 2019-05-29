@@ -22,8 +22,28 @@ def start():
     print("5_6_variant.py")
 
     start_time = timeit.default_timer()
-    print("")
+    print("fun_one([4, 2, 2, 2, 1, 1, 3, 4, 5, 2, 3, 4]) = ", fun_one([4, 2, 2, 2, 1, 1, 3, 4, 5, 2, 3, 4]))
+    print("fun_one([3, 3, 3, 4, 4, 4, 4, 1, 2, 3]) = ", fun_one([3, 3, 3, 4, 4, 4, 4, 1, 2, 3]))
+    print("fun_one([1, 1, 1, 1, 1]) = ", fun_one([1, 1, 1, 1, 1]))
+    print("fun_one([2, 2, 2, 2, 1, 3, 2, 3, 4, 8]) = ", fun_one([2, 2, 2, 2, 1, 3, 2, 3, 4, 8]))
+    print("fun_one([1, 2, 3, 4, 5]) = ", fun_one([1, 2, 3, 4, 5]))
     print("Execution Time: ", timeit.default_timer() - start_time)
+
+
+### the first one described above
+def fun_one(A):
+    dup_num = 1
+    max_num = 1
+    for i in range(1, len(A)):
+        if A[i] is A[i-1]:
+            dup_num += 1
+        else:
+            max_num = max(max_num, dup_num)
+            dup_num = 1
+
+    max_num = max(max_num, dup_num)
+
+    return max_num
 
 
 start()
