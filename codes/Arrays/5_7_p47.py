@@ -97,17 +97,18 @@ def maximum_profit_twice2(A):
 
 ### do it in O(n) time complexity and O(1) space complexity
 def maximum_profit_twice3(A):
-    min_prices, max_profit = [A[0]] * 2, [0] * 2
     min_value = A[0]
     max_profit_once = 0
+    min_price = A[0]
+    max_profit_twice = 0
     
     for i in range(1, len(A)):
-        max_profit[1] = max(max_profit[1], A[i] - min_prices[1])
-        min_prices[1] = min(min_prices[1], A[i] - max_profit_once)
+        max_profit_twice = max( max_profit_twice, A[i] - min_price)
+        min_price = min(min_price, A[i] - max_profit_once)
         max_profit_once = max(max_profit_once, A[i] - min_value)
         min_value = min(min_value, A[i])
 
-    return max_profit[1]
+    return  max_profit_twice
 
 
 start()
