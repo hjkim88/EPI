@@ -41,6 +41,14 @@ def start():
     print("maximum_profit_twice2([300, 200, 100, 400, 500, 600]) = ", maximum_profit_twice2([300, 200, 100, 400, 500, 600]))
     print("Execution Time: ", timeit.default_timer() - start_time)
 
+    start_time = timeit.default_timer()
+    print("maximum_profit_twice3([200, 500, 100, 200, 400, 300, 200, 150, 350, 300, 500]) = ", maximum_profit_twice3([200, 500, 100, 200, 400, 300, 200, 150, 350, 300, 500]))
+    print("maximum_profit_twice3([150, 100, 550, 450, 300, 600]) = ", maximum_profit_twice3([150, 100, 550, 450, 300, 600]))
+    print("maximum_profit_twice3([200, 100, 200, 300, 300, 800]) = ", maximum_profit_twice3([200, 100, 200, 300, 300, 800]))
+    print("maximum_profit_twice3([100, 100, 100, 100, 100, 100]) = ", maximum_profit_twice3([100, 100, 100, 100, 100, 100]))
+    print("maximum_profit_twice3([300, 200, 100, 400, 500, 600]) = ", maximum_profit_twice3([300, 200, 100, 400, 500, 600]))
+    print("Execution Time: ", timeit.default_timer() - start_time)
+
 
 ### a function to return the maximum profit (buy & sell at most twice)
 ### a brute-force approach would be for every item i (0:len(A)), regard that i is the separation between the first
@@ -87,19 +95,19 @@ def maximum_profit_twice2(A):
     return max_profit
 
 
-### 5_7_variant - do it in O(n) time complexity and O(1) space complexity
+### do it in O(n) time complexity and O(1) space complexity
 def maximum_profit_twice3(A):
+    min_prices, max_profit = [A[0]] * 2, [0] * 2
     min_value = A[0]
-    max_profit = 0
-    first_high = 0
-    second_high = 0
+    max_profit_once = 0
+    
     for i in range(1, len(A)):
-        max_profit = max(max_profit, A[i] - min_value)
-        if A[i] > A[i-1]:
-            first_high = max(first_high, A[i] - min_value)
+        max_profit[1] = max(max_profit[1], A[i] - min_prices[1])
+        min_prices[1] = min(min_prices[1], A[i] - max_profit_once)
+        max_profit_once = max(max_profit_once, A[i] - min_value)
         min_value = min(min_value, A[i])
 
-    return max_profit
+    return max_profit[1]
 
 
 start()
