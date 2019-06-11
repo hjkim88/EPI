@@ -96,19 +96,32 @@ def maximum_profit_twice2(A):
 
 
 ### do it in O(n) time complexity and O(1) space complexity
+### get hint from online solution
+### for every A[i] determine which is bigger: the max_profit_twice so far VS the max_profit_once + A[i] - second_min
+### because the max_profit_once + new profit can be bigger than the previous one
+### determining the second_min is important
+### it should appear after the first_min, and the smallest after the first_min
+### if new max_profit_once appeared, it should start from the A[i]
+### if new first_min is set, then probably, the max_profit_once will be reset and this will also affect the second_min
+### because second_min will be also set as the A[i] that makes the max_profit_once,
+### and then it will find the second_min from that value
 def maximum_profit_twice3(A):
     min_value = A[0]
     max_profit_once = 0
-    min_price = A[0]
-    max_profit_twice = 0
-    
+    second_min = A[0]
+    max_profit_overall = 0
+
     for i in range(1, len(A)):
-        max_profit_twice = max( max_profit_twice, A[i] - min_price)
-        min_price = min(min_price, A[i] - max_profit_once)
-        max_profit_once = max(max_profit_once, A[i] - min_value)
+        max_profit_overall = max(max_profit_overall, max_profit_once + A[i] - second_min)
+        if max_profit_once < A[i] - min_value:
+            max_profit_once = A[i] - min_value
+            second_min = A[i]
+        else:
+            second_min = min(second_min, A[i])
+
         min_value = min(min_value, A[i])
 
-    return  max_profit_twice
+    return max_profit_overall
 
 
 start()
