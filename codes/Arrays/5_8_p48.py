@@ -7,6 +7,10 @@
 #                B having the property that B[0] <= B[1] >= B[2] <= B[3] >= B[4] <= B[5] >= ...
 #
 #   Example    : input: [3, 4, 1, 54, 32, 42, 7, 5, 43] -> output: [3, 4, 1, 54, 32, 42, 5, 43, 7]
+#                input: [34, 2, 54, 64, 23, 43, 25, 5] -> output: [2, 54, 32, 64, 23, 43, 5, 25]
+#                input: [100, 43, 2, 53, 64, 54, 34, 6] -> output: [34, 100, 6, 53, 2, 64, 43, 54]
+#                input: [53, 6, 34, 23, 64, 34, 64, 34] -> output: [6, 53, 34, 64, 23, 34, 34, 63]
+#                input: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5] -> output: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
 #
 #   Instruction
 #               1. import 5_8_p48.py
@@ -22,8 +26,27 @@ def start():
     print("5_8_p48.py")
 
     start_time = timeit.default_timer()
-    print("")
+    print("fluctuation([3, 4, 1, 54, 32, 42, 7, 5, 43]) = ", fluctuation([3, 4, 1, 54, 32, 42, 7, 5, 43]))
+    print("fluctuation([34, 2, 54, 64, 23, 43, 25, 5]) = ", fluctuation([34, 2, 54, 64, 23, 43, 25, 5]))
+    print("fluctuation([100, 43, 2, 53, 64, 54, 34, 6]) = ", fluctuation([100, 43, 2, 53, 64, 54, 34, 6]))
+    print("fluctuation([53, 6, 34, 23, 64, 34, 64, 34]) = ", fluctuation([53, 6, 34, 23, 64, 34, 64, 34]))
+    print("fluctuation([5, 5, 5, 5, 5, 5, 5, 5, 5, 5]) = ", fluctuation([5, 5, 5, 5, 5, 5, 5, 5, 5, 5]))
     print("Execution Time: ", timeit.default_timer() - start_time)
+
+
+### a bruce-force approach would be iteratively find bigger/smaller number than the previous one
+### time complexity: O(n^2), space complexity: O(1)
+
+### a more efficient one is to swap consecutive values sequentially
+def fluctuation(A):
+    for i in range(0, len(A)-1, 2):
+        if A[i] > A[i+1]:
+            A[i], A[i+1] = A[i+1], A[i]
+    for i in range(1, len(A)-1, 2):
+        if A[i] < A[i+1]:
+            A[i], A[i + 1] = A[i + 1], A[i]
+
+    return A
 
 
 start()
