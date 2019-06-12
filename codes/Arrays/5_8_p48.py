@@ -38,6 +38,15 @@ def start():
 ### time complexity: O(n^2), space complexity: O(1)
 
 ### a more efficient one is to swap consecutive values sequentially
+### time complexity: O(n), space complexity: O(1)
+### only two for loops are needed
+### for example, [5, 3, 6, 8], we do it with indicies of 0 and 2
+### [5, 3, 6, 8] -> [3, 5, 6, 8]
+### then we check indicies of 1 and 3,
+### [3, 5, 6, 8] -> [3, 6, 5, 8]
+### here, only two for loops are OK because we already know 3 < 5 and 6 < 8
+### and if 5 < 6, then 6 is already bigger than 3, since "3 < 5" is already ordered in the first step loop
+### likewise, 5 < 8 because we already know 5 < 6 < 8 and the "6 < 8" is already ordrered in the first step loop
 def fluctuation(A):
     for i in range(0, len(A)-1, 2):
         if A[i] > A[i+1]:
