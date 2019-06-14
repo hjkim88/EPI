@@ -34,6 +34,14 @@ def start():
     print("get_primes(99) = ", get_primes(99))
     print("Execution Time: ", timeit.default_timer() - start_time)
 
+    start_time = timeit.default_timer()
+    print("generate_primes(18) = ", generate_primes(18))
+    print("generate_primes(5) = ", generate_primes(5))
+    print("generate_primes(24) = ", generate_primes(24))
+    print("generate_primes(42) = ", generate_primes(42))
+    print("generate_primes(99) = ", generate_primes(99))
+    print("Execution Time: ", timeit.default_timer() - start_time)
+
 
 ### a brute-force approach would be one nested for loop that from 2 to the given number,
 ### check the current number has divisors. Time complexity would be O(n^2), space complexity: O(n).
@@ -50,6 +58,22 @@ def get_primes(int_num):
         return None
     else:
         return primes
+
+
+### a function described in the book
+def generate_primes(n):
+    primes = []
+    # is_prime[p] represents if p is prime or not. Initially, set each to true,
+    # expecting 0 and 1. Then use sieving to eliminate nonprimes.
+    is_prime = [False, False] + [True] * (n-1)
+    for p in range(2, n):
+        if is_prime[p]:
+            primes.append(p)
+            # sieve p's multiples.
+            for i in range(p, n+1, p):
+                is_prime[i] = False
+
+    return primes
 
 
 start()
