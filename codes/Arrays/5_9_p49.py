@@ -42,25 +42,43 @@ def start():
     print("generate_primes(99) = ", generate_primes(99))
     print("Execution Time: ", timeit.default_timer() - start_time)
 
+    start_time = timeit.default_timer()
+    print("generate_primes_from_1_to_n(18) = ", generate_primes_from_1_to_n(18))
+    print("generate_primes_from_1_to_n(5) = ", generate_primes_from_1_to_n(5))
+    print("generate_primes_from_1_to_n(24) = ", generate_primes_from_1_to_n(24))
+    print("generate_primes_from_1_to_n(42) = ", generate_primes_from_1_to_n(42))
+    print("generate_primes_from_1_to_n(99) = ", generate_primes_from_1_to_n(99))
+    print("Execution Time: ", timeit.default_timer() - start_time)
+
 
 ### a brute-force approach would be one nested for loop that from 2 to the given number,
 ### check the current number has divisors. Time complexity would be O(n^2), space complexity: O(n).
 ### a more efficient approach would be using Sieve of Eratosthenes - time complexity: O(n^1.5), space complexity: O(n).
 def get_primes(int_num):
-    primes = [2] + [x for x in range(3, int_num+1, 2)]
+    is_prime = [False, False] + [True] * (int_num-1)
 
-    for i in range(3, math.floor(math.sqrt(int_num)+1)):
-        for number in primes[2:]:
-            if number % i is 0:
-                primes.remove(number)
+    for i in range(2, math.floor(math.sqrt(int_num)+1)):
+        prime = True
+        for j in range(2, i):
+            if i % j is 0:
+                prime = False
+                break
 
-    if int_num is 1:
-        return None
-    else:
-        return primes
+        if prime is True:
+            for j in range(2*i, int_num+1, i):
+                is_prime[j] = False
+
+    primes = []
+    for i in range(len(is_prime)):
+        if is_prime[i]:
+            primes.append(i)
+
+    return primes
 
 
 ### a function described in the book
+### but this makes an error when n = 5
+### generate_primes(5) should be [2, 3, 5]
 def generate_primes(n):
     primes = []
     # is_prime[p] represents if p is prime or not. Initially, set each to true,
@@ -72,6 +90,27 @@ def generate_primes(n):
             # sieve p's multiples.
             for i in range(p, n+1, p):
                 is_prime[i] = False
+
+    return primes
+
+
+### a more efficient function described in the book
+### honestly, could not understand it
+def generate_primes_from_1_to_n(n):
+    size = (n - 3) // 2 + 1
+    primes = [2] # stores the primes from 1 to n
+    # is_prime[i] represents (2i + 3) is prime or not
+    # initially set each to true. then use sieving to eliminate nonprimes
+    is_prime = [True] * size
+    for i in range(size):
+        if is_prime[i]:
+            p = i * 2 + 3
+            primes.append(p)
+            # sieving from p^2, where p^2 = (4i^2 + 12i + 9). The index in is_prime
+            # is (2i^2 + 6i +3) because is_prime[i] represents 2i + 3
+            # note that we need to use long for j because p^2 might overflow
+            for j in range(2 * i**2 + 6 * i + 3, size, p):
+                is_prime[j] = False
 
     return primes
 
