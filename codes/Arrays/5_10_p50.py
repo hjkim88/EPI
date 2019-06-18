@@ -32,6 +32,14 @@ def start():
     print("applyPerm(['e', 'e', 'e', 'e'], [3, 1, 2, 0]) = ", applyPerm(['e', 'e', 'e', 'e'], [3, 1, 2, 0]))
     print("Execution Time: ", timeit.default_timer() - start_time)
 
+    start_time = timeit.default_timer()
+    print("applyPerm2(['a', 'b', 'c', 'd'], [2, 0, 1, 3]) = ", applyPerm2(['a', 'b', 'c', 'd'], [2, 0, 1, 3]))
+    print("applyPerm2([1, 2, 3, 4], [3, 2, 1, 0]) = ", applyPerm2([1, 2, 3, 4], [3, 2, 1, 0]))
+    print("applyPerm2([54, 3, 64, 2], [2, 3, 0, 1]) = ", applyPerm2([54, 3, 64, 2], [2, 3, 0, 1]))
+    print("applyPerm2([7, 4, 5, 5], [1, 3, 0, 2]) = ", applyPerm2([7, 4, 5, 5], [1, 3, 0, 2]))
+    print("applyPerm2(['e', 'e', 'e', 'e'], [3, 1, 2, 0]) = ", applyPerm2(['e', 'e', 'e', 'e'], [3, 1, 2, 0]))
+    print("Execution Time: ", timeit.default_timer() - start_time)
+
 
 ### a brute-force approach would be from 0 to len(P) of P, B[P[i]] = A[i]
 ### time complexity: O(n), space complexity: O(n)
@@ -41,6 +49,12 @@ def applyPerm(A, P):
         B[P[i]] = A[i]
 
     return B
+
+
+### is there an approach with time complexity: O(n) and space complexity: O(1)?
+def applyPerm2(A, P):
+
+    return A
 
 
 start()
