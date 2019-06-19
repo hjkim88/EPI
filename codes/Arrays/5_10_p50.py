@@ -52,7 +52,15 @@ def applyPerm(A, P):
 
 
 ### is there an approach with time complexity: O(n) and space complexity: O(1)?
+### find cycles in the permutation. if a value has been permuted, assign it as a negative value
+### if we return to the negative value, start new cycle.
 def applyPerm2(A, P):
+    for i in range(len(P)):
+        next_idx = i
+        temp = A[next_idx]
+        while P[next_idx] >= 0:
+            A[P[next_idx]], temp = temp, A[P[next_idx]]
+            P[next_idx], next_idx = -1, P[next_idx]
 
     return A
 
