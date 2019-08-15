@@ -11,6 +11,7 @@
 #                input: [3, 1, 0, 2, 4], output: [3, 1, 0, 4, 2]
 #                input: [2, 0, 1, 3, 4, 5], output: [2, 0, 1, 3, 5, 4]
 #                input: [0, 4, 2, 1, 3, 7, 6, 5], output: [0, 4, 2, 1, 5, 3, 6, 7]
+#                input: [1, 5, 4, 3, 2, 0], output: [2, 0, 1, 3, 4, 5]
 #
 #   Instruction
 #               1. import 5_11_p52.py
@@ -31,6 +32,7 @@ def start():
     print("next_perm([3, 1, 0, 2, 4]) = ", next_perm([3, 1, 0, 2, 4]))
     print("next_perm([2, 0, 1, 3, 4, 5]) = ", next_perm([2, 0, 1, 3, 4, 5]))
     print("next_perm([0, 4, 2, 1, 3, 7, 6, 5]) = ", next_perm([0, 4, 2, 1, 3, 7, 6, 5]))
+    print("next_perm([1, 5, 4, 3, 2, 0]) = ", next_perm([1, 5, 4, 3, 2, 0]))
     print("Execution Time: ", timeit.default_timer() - start_time)
 
 
