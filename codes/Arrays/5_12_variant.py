@@ -25,17 +25,25 @@ def start():
     print("5_12_variant.py")
 
     start_time = timeit.default_timer()
-    plt.show(printRandDist(100, 10000))
+    printRandDist(100, 1000000)
+    printRandDist2(100, 1000000)
     print("Execution Time: ", timeit.default_timer() - start_time)
 
 
-### print a barplot of random numbers
+### print a density plot of random numbers
 def printRandDist(max, n):
     numpy.random.seed(0)
     x = numpy.random.rand(n) * (max-1)
     bar_plot = seaborn.distplot(x)
+    plt.show(block = True)
 
-    return bar_plot
+
+### print a density plot of random numbers mod MAX-1
+def printRandDist2(max, n):
+    numpy.random.seed(0)
+    x = numpy.random.rand(n) * (max-1) % max
+    bar_plot = seaborn.distplot(x)
+    plt.show(block = True)
 
 
 start()
