@@ -65,7 +65,7 @@ def packet_sniffer(packet, k):
 ### this can downsize the space complexity hugely and the time complexity
 def packet_sniffer2(packet, k):
     result = packet[0:k]
-    for x in range((k+1), len(packet)):
+    for x in range(k, len(packet)):
         idx = random.sample(range(x), 1)
         if idx[0] < k:
             result[idx[0]] = packet[x]
